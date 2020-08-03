@@ -1,4 +1,4 @@
-package com.bit2020.emailist03.reposetory;
+package com.bit2020.emailist03.repository;
 
 
 import java.sql.Connection;

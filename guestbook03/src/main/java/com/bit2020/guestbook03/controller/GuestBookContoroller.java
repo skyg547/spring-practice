@@ -1,4 +1,4 @@
-package com.bit2020.emailist03.controller;
+package com.bit2020.guestbook03.controller;
 
 import java.util.List;
 
@@ -9,15 +9,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.bit2020.emailist03.repository.EmaillistRepository;
 import com.bit2020.emailist03.vo.EmaillistVo;
+import com.bit2020.guestbook03.repository.GuestBookRepository;
+import com.bit2020.guestbook03.vo.GuestBookVo;
 
-public class EmaillistContoroller {
+public class GuestBookContoroller {
 
 	@Autowired
-	private EmaillistRepository emaillistRepository;
+	private GuestBookRepository guestbookRepository;
 
 	@RequestMapping("")
 	public String index(Model model) {
-		List<EmaillistVo> list = emaillistRepository.findAll();
+		List<GuestBookVo> list = guestbookRepository.findAll();
 		model.addAttribute("list", list);
 		return "/WEB-INF/views/index.jsp";
 	}
@@ -28,8 +30,8 @@ public class EmaillistContoroller {
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String add(EmaillistVo vo) {
-		emaillistRepository.insert(vo);
+	public String add(GuestBookVo vo) {
+		guestbookRepository.insert(vo);
 		return "redirect:/";
 	}
 }
