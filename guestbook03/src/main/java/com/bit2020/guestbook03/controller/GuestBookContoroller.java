@@ -7,8 +7,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.bit2020.emailist03.repository.EmaillistRepository;
-import com.bit2020.emailist03.vo.EmaillistVo;
 import com.bit2020.guestbook03.repository.GuestBookRepository;
 import com.bit2020.guestbook03.vo.GuestBookVo;
 

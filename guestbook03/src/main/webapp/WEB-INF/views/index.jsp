@@ -1,9 +1,7 @@
-<%@page import="com.bit2020.guestbook.vo.GuestbookVo"%>
-<%@page import="java.util.List"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%
-	List<GuestbookVo> list = (List<GuestbookVo>)request.getAttribute("list");
-%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>  
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -25,11 +23,16 @@
 			</tr>
 		</table>
 	</form>
+	<c:set var="count" scope="page" value =""/>
+	<c:set var="index" scope="page" value ="0"/>
+	
+	
 	<%
 		int count = list.size();
 		int index = 0;
 		for(GuestbookVo vo : list){
 	%>
+	<c:>
 			<br>
 			<table width=510 border=1>
 				<tr>
