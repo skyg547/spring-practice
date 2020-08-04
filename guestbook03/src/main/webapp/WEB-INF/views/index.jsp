@@ -26,13 +26,13 @@
 	<c:set var="count" scope="page" value =""/>
 	<c:set var="index" scope="page" value ="0"/>
 	
-	
-	<%
+	<%-- 
+<%-- 	<%
 		int count = list.size();
 		int index = 0;
 		for(GuestbookVo vo : list){
 	%>
-	<c:>
+	<c:> 
 			<br>
 			<table width=510 border=1>
 				<tr>
@@ -49,7 +49,7 @@
 			</table>
 	<%
 		}
-	%>	
+	%>	 --%>
 	
 </body>
 </html>
