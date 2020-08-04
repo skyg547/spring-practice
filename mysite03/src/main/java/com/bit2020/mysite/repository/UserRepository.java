@@ -58,7 +58,7 @@ public class UserRepository {
 		
 		return result;
 	}	
-	private Connection getConnection() throws UserRepositoryException {
+	private Connection getConnection() throws SQLException  {
 		Connection connection = null;
 		
 		// 1. jdbc 라이브러리 로딩 Driver loading -> mariaDB
@@ -78,7 +78,7 @@ public class UserRepository {
 		return connection;
 	}
 
-	public UserVo findByNo(Long no) {
+	public UserVo findByNo(Long no) throws UserRepositoryException {
 		UserVo result = null;
 		Connection connection = null;
 		PreparedStatement pstmt = null;

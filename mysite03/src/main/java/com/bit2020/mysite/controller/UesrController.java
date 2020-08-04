@@ -24,7 +24,7 @@ public class UesrController {
 	
 
 	@RequestMapping(value="/join", method = RequestMethod.POST)
-	public String login(UserVo userVo){
+	public String join(UserVo userVo){
 		
 		userService.join(userVo);
 		return "redirect:/user/joinsuccess";
