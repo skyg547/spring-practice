@@ -22,6 +22,10 @@ public class UesrController {
 	@Autowired
 	private UserService userService;
 	
+	@RequestMapping(value="/join", method = RequestMethod.GET)
+	public String join(){
+		return "user/join";
+	}
 
 	@RequestMapping(value="/join", method = RequestMethod.POST)
 	public String join(UserVo userVo){
@@ -29,7 +33,7 @@ public class UesrController {
 		userService.join(userVo);
 		return "redirect:/user/joinsuccess";
 	}
-	
+
 	@RequestMapping(value="/joinsuccess", method = RequestMethod.GET)
 	public String joinSuccess(){
 		return "user/joinsuccess";
@@ -60,11 +64,6 @@ public class UesrController {
 		return "redirect:/";
 	}
 	
-	@RequestMapping(value="/join", method = RequestMethod.GET)
-	public String join(){
-		return "user/join";
-	}
-	
 	@RequestMapping(value="/logout", method = RequestMethod.GET)
 	public String logout(HttpSession session){
 	
@@ -81,6 +80,14 @@ public class UesrController {
 		model.addAttribute("userVo", userVo);
 		return "user/update";
 	}
+	/*
+	 * @RequestMapping(value="/update", method = RequestMethod.POST) public String
+	 * update(HttpSession session, Model model){ UserVo authUser =
+	 * (UserVo)session.getAttribute("authUser"); Long no = authUser.getNo();
+	 * 
+	 * UserVo userVo = userService.getUser(no); model.addAttribute("userVo",
+	 * userVo); return "user/update"; }
+	 */
 	
 	/*
 	 * @ExceptionHandler(Exception.class) public String handlerException() {
