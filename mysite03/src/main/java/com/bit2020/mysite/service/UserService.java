@@ -17,14 +17,19 @@ public class UserService {
 		userRepository.save(userVo);
 	}
 
-	public UserVo getUser(String email, String password) {
+	public UserVo getUser(UserVo vo) {
 		// TODO Auto-generated method stub
 		
-		return userRepository.findByEmailAndPassWord(email, password);
+		return userRepository.findByEmailAndPassWord(vo);
 	}
 	public UserVo getUser(Long no) {
 		// TODO Auto-generated method stub
 		UserVo userVo = userRepository.findByNo(no);
 		return userVo;
+	}
+
+	public void updateUser(UserVo vo) {
+		// TODO Auto-generated method stub
+		userRepository.update(vo);
 	}
 }
