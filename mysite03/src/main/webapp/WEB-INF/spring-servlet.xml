@@ -12,7 +12,12 @@
 
 
 	<!-- validator, conversionService, messageConverter를 자동으로 등록 -->
-	<mvc:annotation-driven />
+	<mvc:annotation-driven >
+	<mvc:argument-resolvers>
+	<bean class= "com.bit2020.mysite.security.AuthUserHandlerMethodArgumentResolver"></bean>
+	</mvc:argument-resolvers>
+	</mvc:annotation-driven>
+	
 
 	<!-- 서블릿 컨테이너의 디폴트 서블릿 위임 핸들러 -->
 	<mvc:default-servlet-handler />
@@ -20,20 +25,27 @@
 	<!-- Interceptors -->
 	<mvc:interceptors>
 
-		<!-- <mvc:interceptor>
-		<mvc:mapping path="/guestbook/**"/>
-		<bean class = "com.bit2020.mysite.interceptor.MyInterceptor02"></bean>
+		<!-- <mvc:interceptor> <mvc:mapping path="/guestbook/**"/> <bean class 
+			= "com.bit2020.mysite.interceptor.MyInterceptor02"></bean> </mvc:interceptor> -->
+		<mvc:interceptor>
+			<mvc:mapping path="/user/auth" />
+			<bean class="com.bit2020.mysite.security.LoginInterceptor"></bean>
 		</mvc:interceptor>
- -->
- <mvc:interceptor>
-	<mvc:mapping path="/user/auth" />
-	<bean class="com.bit2020.mysite.security.LoginInterceptor"></bean>
-</mvc:interceptor>
-<mvc:interceptor>
-	<mvc:mapping path="/user/logout" />
-	<bean class="com.bit2020.mysite.security.LogoutInterceptor"></bean>
-</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/user/logout" />
+			<bean class="com.bit2020.mysite.security.LogoutInterceptor"></bean>
+		</mvc:interceptor>
+			<mvc:interceptor>
+			<mvc:mapping path="/user/**/" />
+			<mvc:exclude-mapping path="/user/auth"/>
+			<mvc:exclude-mapping path="/user/logout"/>
+						<mvc:exclude-mapping path="/assets/**/"/>
+			
+			<bean class="com.bit2020.mysite.security.AuthInterceptor"></bean>
+		</mvc:interceptor>
+		
 	</mvc:interceptors>
+	
 	<!-- ViewResolver 설정 -->
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">

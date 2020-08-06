@@ -9,9 +9,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>예외 발생</h1>
-	<p>
+<h1>예외 발생</h1>
+	<pre style="color:red">
 		${exception }
-	</p>
+	</pre>
 </body>
 </html>

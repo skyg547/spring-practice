@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.bit2020.mysite.security.Auth;
 import com.bit2020.mysite.service.UserService;
 import com.bit2020.mysite.vo.UserVo;
 
@@ -45,9 +46,16 @@ public class UesrController {
 	}
 	
 	//@auth 인증을 해서 들어오라
+	@Auth
 	@RequestMapping(value="/update", method = RequestMethod.GET)
-	public String update(HttpSession session, Model model){
-		UserVo authUser = (UserVo)session.getAttribute("authUser");
+	public String update(@AuthUser UserVo authUser, Model model){
+		//UserVo authUser = (UserVo)session.getAttribute("authUser");
+		
+		
+		if(authUser == null) {
+			return "redirect:/";
+			
+		}
 		Long no = authUser.getNo();
 		
 		UserVo userVo = userService.getUser(no);
@@ -55,10 +63,10 @@ public class UesrController {
 		return "user/update";
 	}
 	
+	@Auth
 	@RequestMapping(value="/update", method = RequestMethod.POST)
-	public String update(HttpSession session, UserVo vo){
+	public String update(@AuthUser UserVo authUser, UserVo vo){
 		System.out.println(vo);
-		UserVo authUser = (UserVo)session.getAttribute("authUser");
 		vo.setNo(authUser.getNo());
 		userService.updateUser(vo);
 		return "redirect:/user/update";

@@ -12,6 +12,7 @@
         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
         http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
 
+	
 
 	<!-- Connection Pool DataSource -->
 	<bean id="dataSource"
@@ -23,7 +24,6 @@
 		<property name="username" value="webdb" />
 		<property name="password" value="webdb" />
 	</bean>
-
 	<!-- MyBatis SqlSessionFactoryBean -->
 	<bean id="sqlSessionFactory"
 		class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -31,6 +31,7 @@
 		<property name="configLocation"
 			value="classpath:mybatis/configuration.xml" />
 	</bean>
+
 
 
 	<!-- MyBatis SqlSessionTemplate -->

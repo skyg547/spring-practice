@@ -1,5 +1,8 @@
 package com.bit2020.mysite.exception;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -19,11 +22,14 @@ public class GlobalExceptionHandler {
 				
 		//1. 로깅 작업
 		System.out.println("error:" + e);
+		StringWriter errors = new StringWriter(); //버퍼
+		e.printStackTrace(new PrintWriter(errors));
 		LOG.error("error:" + e);
 		//2. 사과페이wl
 		httpServletRequest.setAttribute("exception", e.toString());
-		httpServletRequest.getRequestDispatcher("/WEB-INF/views/error/exception.jsp").forward(httpServletRequest, httpServletResponse);
 		
+		httpServletRequest.getRequestDispatcher("/WEB-INF/views/error/exception.jsp").forward(httpServletRequest, httpServletResponse);
+	
 	}
 	
 	
