@@ -10,14 +10,40 @@
 	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
+	<!-- auto proxy -->
+	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 
 	<!-- validator, conversionService, messageConverter를 자동으로 등록 -->
-	<mvc:annotation-driven >
-	<mvc:argument-resolvers>
-	<bean class= "com.bit2020.mysite.security.AuthUserHandlerMethodArgumentResolver"></bean>
-	</mvc:argument-resolvers>
+	<mvc:annotation-driven>
+		<mvc:argument-resolvers>
+			<bean
+				class="com.bit2020.mysite.security.AuthUserHandlerMethodArgumentResolver"></bean>
+		</mvc:argument-resolvers>
 	</mvc:annotation-driven>
-	
+
+
+	<mvc:annotation-driven>
+		<mvc:message-converters>
+			<bean
+				class="org.springframework.http.converter.StringHttpMessageConverter">
+				<property name="supportedMediaTypes">
+					<list>
+						<value>text/html; charset=UTF-8</value>
+					</list>
+				</property>
+			</bean>
+			<bean
+				class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+				<property name="supportedMediaTypes">
+					<list>
+						<value>application/json; charset=UTF-8</value>
+					</list>
+				</property>
+			</bean>
+
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+
 
 	<!-- 서블릿 컨테이너의 디폴트 서블릿 위임 핸들러 -->
 	<mvc:default-servlet-handler />
@@ -35,17 +61,17 @@
 			<mvc:mapping path="/user/logout" />
 			<bean class="com.bit2020.mysite.security.LogoutInterceptor"></bean>
 		</mvc:interceptor>
-			<mvc:interceptor>
+		<mvc:interceptor>
 			<mvc:mapping path="/user/**/" />
-			<mvc:exclude-mapping path="/user/auth"/>
-			<mvc:exclude-mapping path="/user/logout"/>
-						<mvc:exclude-mapping path="/assets/**/"/>
-			
+			<mvc:exclude-mapping path="/user/auth" />
+			<mvc:exclude-mapping path="/user/logout" />
+			<mvc:exclude-mapping path="/assets/**/" />
+
 			<bean class="com.bit2020.mysite.security.AuthInterceptor"></bean>
 		</mvc:interceptor>
-		
+
 	</mvc:interceptors>
-	
+
 	<!-- ViewResolver 설정 -->
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">

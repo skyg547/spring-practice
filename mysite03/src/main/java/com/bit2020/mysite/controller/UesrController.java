@@ -1,5 +1,7 @@
 package com.bit2020.mysite.controller;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bit2020.mysite.security.Auth;
@@ -22,6 +25,14 @@ public class UesrController {
 	
 	@Autowired
 	private UserService userService;
+	
+	@ResponseBody
+	@RequestMapping
+	public String emailcheck(String email){
+		System.out.println(email);
+		Map<K, V>
+		
+	}
 	
 	@RequestMapping(value="/join", method = RequestMethod.GET)
 	public String join(){

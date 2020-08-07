@@ -1,3 +1,6 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -60,6 +63,7 @@
 					</tr>
 				</table>
 				<div class="bottom">
+				<c:if test=""></c:if>
 					<a href="" id="new-book">글쓰기</a>
 				</div>				
 			</div>

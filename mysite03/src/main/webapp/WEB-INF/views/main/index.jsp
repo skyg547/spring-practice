@@ -11,10 +11,25 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <link href="${pageContext.request.contextPath}/assets/css/main.css"
 	rel="stylesheet" type="text/css">
+
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/assets/js/jquery/jquery/jquery-1.9.0.jar"></script>
+<script>
+	$.ajax({
+		url : "",
+		type : "get",
+		data : "",
+		dataType : "json",
+		sucess : function(response) {
+				console.log(response.name);
+		}
+
+	})
+</script>
 </head>
 <body>
 	<div id="container">
-		<c:import url="/WEB-INF/views/includes/header.jsp"/>
+		<c:import url="/WEB-INF/views/includes/header.jsp" />
 		<div id="wrapper">
 			<div id="content">
 				<div id="site-introduction">
