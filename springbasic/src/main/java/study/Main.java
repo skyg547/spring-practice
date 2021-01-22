@@ -31,6 +31,7 @@ public class Main {
             //업데이트 쿼리 날리기
             statement.executeUpdate("insert into member(username, password) values ('boojongmin', '1234')");
 
+            connection.setAutoCommit(false);
 
             //셀렉트 쿼리 날리고 받기
             ResultSet resultSet = statement.executeQuery("select * from member");
@@ -40,8 +41,11 @@ public class Main {
                 int id = resultSet.getInt("id");
                 String username = resultSet.getString("username");
                 String pwd = resultSet.getString("password");
+                Member member = new Member(id,username,pwd);
 
-                logger.info("id: "+ id + "userName: " + username + "pwd: " + pwd);
+
+
+                logger.info(member.toString());
 
             }
 
