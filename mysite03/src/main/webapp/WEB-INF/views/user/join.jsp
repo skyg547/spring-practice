@@ -14,10 +14,41 @@
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/assets/js/jquery/jquery/jquery-1.9.0.jar"></script>
 	<script >
-		$(funvtion(){
-			$(btn-email).click()){
+		$(function(){
+			
+			if($("#email").val() == ""){
+				return;
 				
-				$("#email").val();	
+			}
+			$("#btn-email").click(funciton(){
+			
+				
+				$.ajax({
+					url: "${pageContext.request.contextPath}/api/user/checkemail?email="+ $("#email").val(),
+					type: "get",
+					data: "",
+					dataType:"json"
+					success: function(respone){
+						if(respone.result == "fail"){
+							
+							console.error(response.message);
+						}
+//이메일이 존재하는 경우 
+if(respone.data == true){
+	alert("이메일이 존쟈 합니다. 다른 이메일울 선택해 주세요");
+	$("#email").val("";)
+	$("#email").focus;
+	
+}
+						
+					},
+					error: function(XHR, status, e){
+						console.error(status + ":"+e);
+						
+					}
+				})
+				
+				
 				});
 			
 		});
