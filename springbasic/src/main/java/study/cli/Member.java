@@ -1,4 +1,4 @@
-package study;
+package study.cli;
 
 import lombok.*;
 

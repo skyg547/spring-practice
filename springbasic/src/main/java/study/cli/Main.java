@@ -1,4 +1,4 @@
-package study;
+package study.cli;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,7 +26,7 @@ public class Main {
             connection.setAutoCommit(false);
 
             //크레이트 쿼리 날리기
-            statement.execute("create table member(id int auto_increment, username varchar(255) not null, password varchar(2555) not null. primary key(id))");
+            statement.execute("create table member(id int auto_increment, username varchar(255) not null, password varchar(2555) not null. primary key(id);)");
 
             //업데이트 쿼리 날리기
             statement.executeUpdate("insert into member(username, password) values ('boojongmin', '1234')");
