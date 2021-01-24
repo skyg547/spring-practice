@@ -32,10 +32,12 @@
 <!--              factory-bean="connectionFactory"-->
 <!--              factory-method="createConnection" />-->
         <bean id="connectionFactory" class = "study.cli.ConnectionFactory">
+            <constructor-arg name="driverClass" value="org.h2.Driver"/>
             <constructor-arg name="url" value="jdbc:h2:mem:test;MODE=MySQL;" />
             <constructor-arg name="user" value="sa" />
             <constructor-arg name="password" value="" />
         </bean>
+
         <bean id ="connection" class="java.sql.Connection"
               factory-bean="connectionFactory"
               factory-method="createConnection"/>

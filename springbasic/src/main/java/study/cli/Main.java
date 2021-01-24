@@ -79,24 +79,32 @@ package study.cli;
 //
 //}
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.sql.SQLException;
 
+@Slf4j
 public class Main {
 
 
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
 
 
-        Class.forName("org.h2.Driver");
 
-        ApplicationContext context = new ClassPathXmlApplicationContext("dao.xml");
+        ApplicationContext context = new ClassPathXmlApplicationContext("dao.xml", "bean.xml");
         Dao dao = context.getBean(Dao.class);
 
+//
+//        dao.run();
+//
 
-        dao.run();
+
+//        A a1 = context.getBean("A",A.class);
+//        A a2 = context.getBean("A",A.class);
+//        동일성 실험 ,
+//        log.info("result : "+ (a1 == a2));
 
     }
 }
