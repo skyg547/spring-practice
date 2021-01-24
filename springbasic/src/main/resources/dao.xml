@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
+<beans default-init-method="init" default-destroy-method="destroy"
+        xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
@@ -7,7 +8,7 @@
         http://www.springframework.org/schema/context
         https://www.springframework.org/schema/context/spring-context.xsd">
 
-<!--    <context:annotation-config/>-->
+    <context:annotation-config/>
 
 <!--    <context:component-scan base-package="kr.co.fastcampus.cli"/>-->
 <!--    <context:property-placeholder location="classpath:application.properties"/>-->
@@ -31,12 +32,13 @@
 <!--        <bean id="connection" class="java.sql.Connection"-->
 <!--              factory-bean="connectionFactory"-->
 <!--              factory-method="createConnection" />-->
-        <bean id="connectionFactory" class = "study.cli.ConnectionFactory">
+        <bean id="connectionFactory" class = "study.cli.ConnectionFactory" init-method="init" destroy-method="destroy">
             <constructor-arg name="driverClass" value="org.h2.Driver"/>
             <constructor-arg name="url" value="jdbc:h2:mem:test;MODE=MySQL;" />
             <constructor-arg name="user" value="sa" />
             <constructor-arg name="password" value="" />
         </bean>
+        <bean class="study.cli.A"/>
 
         <bean id ="connection" class="java.sql.Connection"
               factory-bean="connectionFactory"

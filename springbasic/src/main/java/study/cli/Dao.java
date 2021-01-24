@@ -20,6 +20,7 @@ public class Dao {
 
     }
 
+
     void init() {
         log.info("dao init");
     }

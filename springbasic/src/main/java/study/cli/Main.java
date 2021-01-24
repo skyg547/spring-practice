@@ -81,8 +81,11 @@ package study.cli;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.Lifecycle;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 
 @Slf4j
@@ -93,8 +96,13 @@ public class Main {
 
 
 
-        ApplicationContext context = new ClassPathXmlApplicationContext("dao.xml", "bean.xml");
+        ConfigurableApplicationContext context = new ClassPathXmlApplicationContext("dao.xml", "bean.xml");
         Dao dao = context.getBean(Dao.class);
+
+        Lifecycle lifecycle = context.getBean(Lifecycle.class);
+
+        log.info(">>" + lifecycle.isRunning());
+
 
 //
 //        dao.run();
@@ -106,5 +114,13 @@ public class Main {
 //        동일성 실험 ,
 //        log.info("result : "+ (a1 == a2));
 
+//
+//        ConnectionFactory factory = context.getBean(ConnectionFactory.class);
+//        Connection connection = factory.getConnection();
+//        log.info(""+ (factory.getConnection()!= null));
+        context.close();
+
+        // 컨터이너 상태 체크
+        log.info(">>" + lifecycle.isRunning());
     }
 }
