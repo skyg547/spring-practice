@@ -38,11 +38,22 @@
             <constructor-arg name="user" value="sa" />
             <constructor-arg name="password" value="" />
         </bean>
-        <bean class="study.cli.A"/>
 
+        <bean class="study.cli.A"/>
+        <bean class="study.cli.B">
+            <qualifier value="b1"/>
+        </bean>
+
+        <bean class="study.cli.B">
+            <qualifier value="b2"/>
+        </bean>
+
+        <bean class="study.cli.AppConfig"/>
         <bean id ="connection" class="java.sql.Connection"
               factory-bean="connectionFactory"
               factory-method="createConnection"/>
+
+
 
         <bean id = "dao" class="study.cli.Dao">
             <constructor-arg ref="connection"/>

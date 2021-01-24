@@ -99,9 +99,10 @@ public class Main {
         ConfigurableApplicationContext context = new ClassPathXmlApplicationContext("dao.xml", "bean.xml");
         Dao dao = context.getBean(Dao.class);
 
-        Lifecycle lifecycle = context.getBean(Lifecycle.class);
-
-        log.info(">>" + lifecycle.isRunning());
+        // 라이프사이클
+//        Lifecycle lifecycle = context.getBean(Lifecycle.class);
+//
+//        log.info(">>" + lifecycle.isRunning());
 
 
 //
@@ -118,9 +119,10 @@ public class Main {
 //        ConnectionFactory factory = context.getBean(ConnectionFactory.class);
 //        Connection connection = factory.getConnection();
 //        log.info(""+ (factory.getConnection()!= null));
-        context.close();
+//        스프링 종료 시키기
+//        context.close();
 
         // 컨터이너 상태 체크
-        log.info(">>" + lifecycle.isRunning());
+//        log.info(">>" + lifecycle.isRunning());
     }
 }
