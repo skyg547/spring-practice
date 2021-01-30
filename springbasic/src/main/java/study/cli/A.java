@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
@@ -35,7 +36,7 @@ public  class A {
     @Autowired
     private ApplicationContext context;
 
-
+    @Value("${catlog.name}") String catalogName;
     @Resource(name = "appBeanb1")
     //@Primary 같은 타입이면 먼저 선택
     @Autowired(required = false)

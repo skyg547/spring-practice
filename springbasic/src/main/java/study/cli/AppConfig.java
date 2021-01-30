@@ -5,8 +5,10 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.PropertySource;
 
 @Configuration// 스프링 관련 빈이다, 빈 설정과 동시에
+@PropertySource("classpath:application.properties")
 public class AppConfig {
 
 
