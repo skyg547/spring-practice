@@ -9,8 +9,10 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.annotation.Resource;
 import javax.inject.Inject;
+import java.util.Map;
 
 //@Slf4j
 //public class A implements ApplicationContextAware {
@@ -36,20 +38,27 @@ public  class A {
     @Autowired
     private ApplicationContext context;
 
-    @Value("${catlog.name}") String catalogName;
+//    @Value("#{systemProperties}") Map properties;
+    @Value("#{systemProperties['java.home']}") String properties;
+//    @Value("${catlog.name}") String catalogName;
     @Resource(name = "appBeanb1")
     //@Primary 같은 타입이면 먼저 선택
     @Autowired(required = false)
     @Qualifier("b1")// 퀄리 파이 등록된 같은 타입의 이름으로 등록록
     private B b;
 
-    @PostConstruct
+    @PostConstruct // 생성자가 만들어질때
     void init(){
 
-        log.info(""+b);
+        log.info("A Post construct"+b);
 
     }
 
+    @PreDestroy
+    void destroy(){
+        log.info("A predestroy");
+
+    }
 
     @Autowired
     public A(B b){

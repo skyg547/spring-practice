@@ -98,6 +98,7 @@ public class Main {
 
         ConfigurableApplicationContext context = new ClassPathXmlApplicationContext("dao.xml", "bean.xml");
         Dao dao = context.getBean(Dao.class);
+        context.close();
 
         // 라이프사이클
 //        Lifecycle lifecycle = context.getBean(Lifecycle.class);
