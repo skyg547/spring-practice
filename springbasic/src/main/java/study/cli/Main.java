@@ -84,11 +84,20 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.Lifecycle;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.FilterType;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Component;
 
+import javax.security.auth.login.AccountNotFoundException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+@ComponentScan(basePackageClasses = Main.class, excludeFilters = @ComponentScan.Filter(type = FilterType.REGEX, pattern = "study.cli.b"))// 클래스 있는 패키지 스캐닝 경로  b 를 제외하고 스캐닝
+
+//@ComponentScan(basePackageClasses = Main.class, excludeFilters = @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = B.class))// 클래스 있는 패키지 스캐닝 클래스 b 를 제외하고 스캐닝
+@Configuration
 @Slf4j
 public class Main {
 
@@ -96,11 +105,13 @@ public class Main {
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
 
 
+        ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(Main.class);
+//        ConfigurableApplicationContext context = new ClassPathXmlApplicationContext("dao.xml", "bean.xml");
+        // ConfigurableApplicationContext context = new AnnotationConfigApplicationContext("study.cli"); xml 없이 어노테이션만으로 실행시키기
 
-        ConfigurableApplicationContext context = new ClassPathXmlApplicationContext("dao.xml", "bean.xml");
-       // ConfigurableApplicationContext context = new AnnotationConfigApplicationContext("study.cli"); xml 없이 어노테이션만으로 실행시키기
-
-        Dao dao = context.getBean(Dao.class);
+        B b = context.getBean(B.class);
+        log.info("" + b);
+//        Dao dao = context.getBean(Dao.class);
         context.close();
 
         // 라이프사이클
