@@ -83,6 +83,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.Lifecycle;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.sql.Connection;
@@ -97,6 +98,8 @@ public class Main {
 
 
         ConfigurableApplicationContext context = new ClassPathXmlApplicationContext("dao.xml", "bean.xml");
+       // ConfigurableApplicationContext context = new AnnotationConfigApplicationContext("study.cli"); xml 없이 어노테이션만으로 실행시키기
+
         Dao dao = context.getBean(Dao.class);
         context.close();
 
