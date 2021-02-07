@@ -46,20 +46,20 @@
 <!--            <qualifier value="b1"/>-->
 <!--        </bean>-->
 
-        <bean class="study.cli.B">
-            <qualifier value="b2"/>
-        </bean>
+<!--        <bean class="study.cli.B">-->
+<!--            <qualifier value="b2"/>-->
+<!--        </bean>-->
 
-        <bean class="study.cli.AppConfig"/>
-        <bean id ="connection" class="java.sql.Connection"
-              factory-bean="connectionFactory"
-              factory-method="createConnection"/>
+<!--        <bean class="study.cli.AppConfig"/>-->
+<!--        <bean id ="connection" class="java.sql.Connection"-->
+<!--              factory-bean="connectionFactory"-->
+<!--              factory-method="createConnection"/>-->
 
 
 
-        <bean id = "dao" class="study.cli.Dao">
-            <constructor-arg ref="connection"/>
-        </bean>
+<!--        <bean id = "dao" class="study.cli.Dao">-->
+<!--            <constructor-arg ref="connection"/>-->
+<!--        </bean>-->
 <!--        <bean id="dao" class="study.cli.Dao" factory-bean="daoFactory" factory-method="cretateDao">-->
 <!--            <constructor-arg ref="connection"/>-->
 <!--        </bean>-->

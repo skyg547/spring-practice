@@ -43,10 +43,10 @@ public  class A {
 //    @Value("#{systemProperties}") Map properties;
     @Value("#{systemProperties['java.home']}") String properties;
 //    @Value("${catlog.name}") String catalogName;
-    @Resource(name = "appBeanb1")
+//    @Resource(name = "appBeanb1") b1 //이름 찾기
     //@Primary 같은 타입이면 먼저 선택
     @Autowired(required = false)
-    @Qualifier("b1")// 퀄리 파이 등록된 같은 타입의 이름으로 등록록
+//    @Qualifier("b1")// 퀄리 파이 등록된 같은 타입의 이름으로 등록록
     private B b;
 
     @PostConstruct // 생성자가 만들어질때
