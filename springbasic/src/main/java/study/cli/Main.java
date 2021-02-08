@@ -94,7 +94,7 @@ import javax.security.auth.login.AccountNotFoundException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-//@ComponentScan(basePackageClasses = Main.class, excludeFilters = @ComponentScan.Filter(type = FilterType.REGEX, pattern = "study.cli.b"))// 클래스 있는 패키지 스캐닝 경로  b 를 제외하고 스캐닝
+//@ComponentScan(basePackageClasses = Main.class, excludeFilters = @ComponentScan.Filter(type = FilterType.REGEX, pattern = "study.cli.b"))// 클래 스 있는 패키지 스캐닝 경로  b 를 제외하고 스캐닝
 
 //@ComponentScan(basePackageClasses = Main.class, excludeFilters = @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = B.class))// 클래스 있는 패키지 스캐닝 클래스 b 를 제외하고 스캐닝
 //@Configuration 설정 파일 어노테이션

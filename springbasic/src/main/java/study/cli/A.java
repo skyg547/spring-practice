@@ -39,19 +39,23 @@ import java.util.Map;
 public  class A {
 
     // 콘텍스트도 가능 aware 인터페이스 대신 가능.
-    @Autowired
-    private ApplicationContext context;
+//    @Autowired
+//    private ApplicationContext context;
 
 //    @Value("#{systemProperties}") Map properties;
-    @Value("#{systemProperties['java.home']}") String properties;
+//    @Value("#{systemProperties['java.home']}") String properties;
 //    @Value("${catlog.name}") String catalogName;
 //    @Resource(name = "appBeanb1") b1 //이름 찾기
     //@Primary 같은 타입이면 먼저 선택
 //    @Autowired(required = false)
 //    @Qualifier("b1")// 퀄리 파이 등록된 같은 타입의 이름으로 등록록
 //    @Inject // @Autowired 대신 사용 가능.
-    @Autowired
+//    @Autowired
     private B b;
+
+    public A(B b){
+        this.b = b;
+    }
 
     @PostConstruct // 생성자가 만들어질때
     void init(){
@@ -65,12 +69,12 @@ public  class A {
         log.info("A predestroy");
 
     }
-
-    @Autowired
-    public A(B b){
-        this.b = b;
-
-    }
+//
+//    @Autowired
+//    public A(B b){
+//        this.b = b;
+//
+//    }
 
     @Autowired
     public B getB() {
