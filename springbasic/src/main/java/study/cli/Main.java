@@ -94,10 +94,10 @@ import javax.security.auth.login.AccountNotFoundException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-@ComponentScan(basePackageClasses = Main.class, excludeFilters = @ComponentScan.Filter(type = FilterType.REGEX, pattern = "study.cli.b"))// 클래스 있는 패키지 스캐닝 경로  b 를 제외하고 스캐닝
+//@ComponentScan(basePackageClasses = Main.class, excludeFilters = @ComponentScan.Filter(type = FilterType.REGEX, pattern = "study.cli.b"))// 클래스 있는 패키지 스캐닝 경로  b 를 제외하고 스캐닝
 
 //@ComponentScan(basePackageClasses = Main.class, excludeFilters = @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = B.class))// 클래스 있는 패키지 스캐닝 클래스 b 를 제외하고 스캐닝
-@Configuration
+//@Configuration 설정 파일 어노테이션
 @Slf4j
 public class Main {
 
@@ -105,9 +105,13 @@ public class Main {
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
 
 
-        ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(Main.class);
-//        ConfigurableApplicationContext context = new ClassPathXmlApplicationContext("dao.xml", "bean.xml");
-        // ConfigurableApplicationContext context = new AnnotationConfigApplicationContext("study.cli"); xml 없이 어노테이션만으로 실행시키기
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();  // 레지스터 방식으로 컨테이너 설정
+        context.scan("study.cli"); // 스캐닝으로 ComponetScan 사용하기
+        context.register(AppConfig.class); // 레지스터 등록
+        context.refresh();
+//        ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(Main.class); //  설정파일 클래스를 사용하여 콘텍스트 만들기
+//        ConfigurableApplicationContext context = new ClassPathXmlApplicationContext("dao.xml", "bean.xml"); // xml 파일로 클래스 경로로 콘텍스트 만들기
+        // ConfigurableApplicationContext context = new AnnotationConfigApplicationContext("study.cli"); // 경로를 사용하요xml 없이 어노테이션만으로 실행시키기
 
         B b = context.getBean(B.class);
         log.info("" + b);

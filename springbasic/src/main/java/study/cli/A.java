@@ -33,7 +33,7 @@ import java.util.Map;
 ////    }
 //}
 
-@Named("a") // 컴포넌트 대신사용 가능 
+@Named("a") // 컴포넌트 대신사용 가능
 @Component
 @Slf4j
 public  class A {
@@ -49,7 +49,8 @@ public  class A {
     //@Primary 같은 타입이면 먼저 선택
 //    @Autowired(required = false)
 //    @Qualifier("b1")// 퀄리 파이 등록된 같은 타입의 이름으로 등록록
-    @Inject // @Autowired 대신 사용 가능.
+//    @Inject // @Autowired 대신 사용 가능.
+    @Autowired
     private B b;
 
     @PostConstruct // 생성자가 만들어질때
