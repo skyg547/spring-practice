@@ -13,7 +13,8 @@
 <!--   컴포넌트  스캔xml 사용하기 -->
     <context:component-scan base-package="study.cli"></context:component-scan>
 <!--    <context:component-scan base-package="kr.co.fastcampus.cli"/>-->
-<!--    <context:property-placeholder location="classpath:application.properties"/>-->
+<!--    프로퍼티 파일 불러 들이기 -->
+    <context:property-placeholder location="classpath:application.properties"/>
 
 <!--    <bean id = "a" class = "study.cli.di.A">-->
 <!--        <property name="b" ref="b"/>-->
@@ -67,21 +68,22 @@
 
     </beans>
 
-<!--    <beans profile="dev">-->
-<!--        <bean id="connectionFactory" class="kr.co.fastcampus.cli.ConnectionFactory">-->
-<!--            <constructor-arg name="driverClass" value="org.h2.Driver" />-->
-<!--            <constructor-arg name="url" value="jdbc:h2:file:~/test"/>-->
-<!--            <constructor-arg name="user" value="sa"/>-->
-<!--            <constructor-arg name="password" value=""/>-->
-<!--        </bean>-->
+    <beans profile="dev">
+        <bean id="connectionFactory" class="study.cli.ConnectionFactory">
+            <constructor-arg name="driverClass" value="${jdbc.driver-class}" />
+            <constructor-arg name="url" value="${jdbc.url}"/>
+            <constructor-arg name="user" value="${jdbc.username}"/>
+            <constructor-arg name="password" value="${jdbc.password}"/>
+        </bean>
 
-<!--        <bean id="connection" class="java.sql.Connection"-->
-<!--              factory-bean="connectionFactory"-->
-<!--              factory-method="createConnection" />-->
+        <bean id="connection" class="java.sql.Connection"
+              factory-bean="connectionFactory"
+              factory-method="createConnection" />
 
-<!--        <bean id="dao" class="kr.co.fastcampus.cli.Dao" >-->
-<!--            <constructor-arg ref="connection"/>-->
-<!--        </bean>-->
-<!--        <bean class="kr.co.fastcampus.cli.AppConfig" />-->
-<!--    </beans>-->
+        <bean id="dao" class="study.cli.Dao" >
+            <constructor-arg ref="connection"/>
+        </bean>
+
+        <bean class="study.cli.AppConfig" />
+    </beans>
 </beans>

@@ -28,7 +28,10 @@ public class AppConfig {
 
     }
 
+    //설정은 보통 외부에서 A 클래스가 아닌
+    // 같은 클래스지만 한쪽은 비즈니스 클래스(a,b), 한쪽을 설정 클래스(appconfig) 구분하여 사용하기
     @Bean(initMethod = "init", destroyMethod = "destroy")
+//    @Description("의존성 주입") // 설명
     public A a(B b){
         return new A(b);
 
