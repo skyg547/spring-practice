@@ -105,14 +105,17 @@ public class Main {
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
 
 //
-//        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();  // 레지스터 방식으로 컨테이너 설정
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();  // 레지스터 방식으로 컨테이너 설정
+        context.register(AppConfig.class,AppDeafaultConfig.class, AppDevConfig.class);
+        context.refresh();
 //        context.scan("study.cli"); // 스캐닝으로 ComponetScan 사용하기
 //        context.register(AppConfig.class); // 레지스터 등록
 //        context.refresh(); // 리프레시로 재가동?
 //        ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(Main.class); //  설정파일 클래스를 사용하여 콘텍스트 만들기
-        ConfigurableApplicationContext context = new ClassPathXmlApplicationContext("dao.xml", "bean.xml"); // xml 파일로 클래스 경로로 콘텍스트 만들기
+//        ConfigurableApplicationContext context = new ClassPathXmlApplicationContext("dao.xml", "bean.xml"); // xml 파일로 클래스 경로로 콘텍스트 만들기
         // ConfigurableApplicationContext context = new AnnotationConfigApplicationContext("study.cli"); // 경로를 사용하요xml 없이 어노테이션만으로 실행시키기
 //
+        context.getEnvironment().setActiveProfiles("dev"); // 실행 환경 설정 . 별로 의미 없음 실행후라
 //        B b = context.getBean(B.class);
 //        log.info("" + b);
         Dao dao = context.getBean(Dao.class);

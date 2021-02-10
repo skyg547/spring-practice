@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans default-init-method="init" default-destroy-method="destroy"
-        xmlns="http://www.springframework.org/schema/beans"
+       xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
@@ -8,82 +8,95 @@
         http://www.springframework.org/schema/context
         https://www.springframework.org/schema/context/spring-context.xsd">
 
-<!--    앱 설정 파일 연결 -->
+    <!--    앱 설정 파일 연결 -->
     <context:annotation-config/>
-<!--   컴포넌트  스캔xml 사용하기 -->
+    <!--   컴포넌트  스캔xml 사용하기 -->
     <context:component-scan base-package="study.cli"></context:component-scan>
-<!--    <context:component-scan base-package="kr.co.fastcampus.cli"/>-->
-<!--    프로퍼티 파일 불러 들이기 -->
+    <!--    <context:component-scan base-package="kr.co.fastcampus.cli"/>-->
+    <!--    프로퍼티 파일 불러 들이기 -->
     <context:property-placeholder location="classpath:application.properties"/>
 
-<!--    <bean id = "a" class = "study.cli.di.A">-->
-<!--        <property name="b" ref="b"/>-->
-<!--        <constructor-arg ref="b"/>-->
+    <!--    <bean id = "a" class = "study.cli.di.A">-->
+    <!--        <property name="b" ref="b"/>-->
+    <!--        <constructor-arg ref="b"/>-->
 
-<!--    </bean>-->
-<!--    <bean id="b" class="study.cli.di.B">-->
-<!--        <constructor-arg value="true"></constructor-arg>-->
-<!--    </bean>-->
+    <!--    </bean>-->
+    <!--    <bean id="b" class="study.cli.di.B">-->
+    <!--        <constructor-arg value="true"></constructor-arg>-->
+    <!--    </bean>-->
+
 
     <beans profile="default">
-<!--        <bean id="connectionFactory" class="kr.co.fastcampus.cli.ConnectionFactory">-->
-<!--            <constructor-arg name="driverClass" value="org.h2.Driver" />-->
-<!--            <constructor-arg name="url" value="jdbc:h2:mem:test"/>-->
-<!--            <constructor-arg name="user" value="sa"/>-->
-<!--            <constructor-arg name="password" value=""/>-->
-<!--        </bean>-->
-<!--        <bean id="connection" class="java.sql.Connection"-->
-<!--              factory-bean="connectionFactory"-->
-<!--              factory-method="createConnection" />-->
-        <bean id="connectionFactory" class = "study.cli.ConnectionFactory" init-method="init" destroy-method="destroy">
+        <!--        <bean id="connectionFactory" class="kr.co.fastcampus.cli.ConnectionFactory">-->
+        <!--            <constructor-arg name="driverClass" value="org.h2.Driver" />-->
+        <!--            <constructor-arg name="url" value="jdbc:h2:mem:test"/>-->
+        <!--            <constructor-arg name="user" value="sa"/>-->
+        <!--            <constructor-arg name="password" value=""/>-->
+        <!--        </bean>-->
+        <!--        <bean id="connection" class="java.sql.Connection"-->
+        <!--              factory-bean="connectionFactory"-->
+        <!--              factory-method="createConnection" />-->
+        <bean id="connectionFactory" class="study.cli.ConnectionFactory" init-method="init" destroy-method="destroy">
             <constructor-arg name="driverClass" value="org.h2.Driver"/>
-            <constructor-arg name="url" value="jdbc:h2:mem:test;MODE=MySQL;" />
-            <constructor-arg name="user" value="sa" />
-            <constructor-arg name="password" value="" />
+            <constructor-arg name="url" value="jdbc:h2:mem:test;MODE=MySQL;"/>
+            <constructor-arg name="user" value="sa"/>
+            <constructor-arg name="password" value=""/>
+        </bean>
+<!--        <bean id="connectionFactory" class="study.cli.ConnectionFactory">-->
+<!--            <constructor-arg name="driverClass" value="${jdbc.driver-class}"/>-->
+<!--            <constructor-arg name="url" value="${jdbc.url}"/>-->
+<!--            <constructor-arg name="user" value="${jdbc.username}"/>-->
+<!--            <constructor-arg name="password" value="${jdbc.password}"/>-->
+<!--        </bean>-->
+
+        <bean id="connection" class="java.sql.Connection"
+              factory-bean="connectionFactory"
+              factory-method="createConnection"/>
+
+        <bean id="dao" class="study.cli.Dao">
+            <constructor-arg ref="connection"/>
         </bean>
 
-<!--        <bean class="study.cli.A"/>-->
-<!--        <bean class="study.cli.B">-->
-<!--            <qualifier value="b1"/>-->
-<!--        </bean>-->
+        <bean class="study.cli.AppDevConfig"/>
+        <!--        <bean class="study.cli.A"/>-->
+        <!--        <bean class="study.cli.B">-->
+        <!--            <qualifier value="b1"/>-->
+        <!--        </bean>-->
 
-<!--        <bean class="study.cli.B">-->
-<!--            <qualifier value="b2"/>-->
-<!--        </bean>-->
+        <!--        <bean class="study.cli.B">-->
+        <!--            <qualifier value="b2"/>-->
+        <!--        </bean>-->
 
-<!--        <bean class="study.cli.AppConfig"/>-->
-<!--        <bean id ="connection" class="java.sql.Connection"-->
-<!--              factory-bean="connectionFactory"-->
-<!--              factory-method="createConnection"/>-->
+        <!--        <bean class="study.cli.AppConfig"/>-->
+        <!--        <bean id ="connection" class="java.sql.Connection"-->
+        <!--              factory-bean="connectionFactory"-->
+        <!--              factory-method="createConnection"/>-->
 
 
-
-<!--        <bean id = "dao" class="study.cli.Dao">-->
-<!--            <constructor-arg ref="connection"/>-->
-<!--        </bean>-->
-<!--        <bean id="dao" class="study.cli.Dao" factory-bean="daoFactory" factory-method="cretateDao">-->
-<!--            <constructor-arg ref="connection"/>-->
-<!--        </bean>-->
-<!--        <bean class="kr.co.fastcampus.cli.AppConfig" />-->
+        <!--        <bean id = "dao" class="study.cli.Dao">-->
+        <!--            <constructor-arg ref="connection"/>-->
+        <!--        </bean>-->
+        <!--        <bean id="dao" class="study.cli.Dao" factory-bean="daoFactory" factory-method="cretateDao">-->
+        <!--            <constructor-arg ref="connection"/>-->
+        <!--        </bean>-->
+        <!--        <bean class="kr.co.fastcampus.cli.AppConfig" />-->
 
     </beans>
 
     <beans profile="dev">
-        <bean id="connectionFactory" class="study.cli.ConnectionFactory">
-            <constructor-arg name="driverClass" value="${jdbc.driver-class}" />
-            <constructor-arg name="url" value="${jdbc.url}"/>
-            <constructor-arg name="user" value="${jdbc.username}"/>
-            <constructor-arg name="password" value="${jdbc.password}"/>
+        <bean id="connectionFactory" class="study.cli.ConnectionFactory" init-method="init" destroy-method="destroy">
+            <constructor-arg name="driverClass" value="org.h2.Driver"/>
+            <constructor-arg name="url" value="jdbc:h2:file:~/test"/>
+            <constructor-arg name="user" value="sa"/>
+            <constructor-arg name="password" value=""/>
         </bean>
-
         <bean id="connection" class="java.sql.Connection"
               factory-bean="connectionFactory"
-              factory-method="createConnection" />
+              factory-method="createConnection"/>
 
-        <bean id="dao" class="study.cli.Dao" >
+        <bean id="dao" class="study.cli.Dao">
             <constructor-arg ref="connection"/>
         </bean>
-
-        <bean class="study.cli.AppConfig" />
+        <bean class="study.cli.AppDevConfig"/>
     </beans>
 </beans>
