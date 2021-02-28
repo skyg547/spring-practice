@@ -7,6 +7,11 @@ import study.cli.service.MyService;
 
 import java.sql.Connection;
 
+@EnableAspectJAutoProxy // aop porxy 사용게 만드는 aop
+
+//@asprct - aop 적용하는 클래스
+//@pointcut - 실행하는메서드
+//@arount - advice
 @PropertySource("classpath:application-${spring.profiles.active}.properties") // 프로필의 속성으로 값을 동적으로 가지고 온다
 @Configuration
 @Profile("default| dev")// 디폴트 이거나 dev 일때 실행 //{"defalut","dev"} 로 대체해서 사용가능
