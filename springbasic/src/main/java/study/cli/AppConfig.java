@@ -2,6 +2,8 @@ package study.cli;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.*;
+import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
+import study.cli.service.MyService;
 
 import java.sql.Connection;
 
@@ -46,5 +48,16 @@ public class AppConfig {
     public A a(B b){
         return new A(b);
 
+    }
+
+    @Bean
+    public LocalValidatorFactoryBean localValidatorFactoryBean(){
+        return new LocalValidatorFactoryBean();
+
+    }
+
+    @Bean
+    public MyService myService(){
+        return new MyService();
     }
 }
