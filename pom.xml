@@ -13,5 +13,6 @@
 		<module>mysite03</module>
 		<module>logex</module>
 		<module>apptest</module>
+		<module>spring4-project</module>
 	</modules>
 </project>
