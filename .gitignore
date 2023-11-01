@@ -40,5 +40,4 @@ hs_err_pid *
 
 *.idea
 *.iml
-/spring4-project/src/main/java/com/ho/Main.java
 /spring4-project.iml
