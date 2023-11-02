@@ -1,6 +1,6 @@
 package com.ems.member.service;
 
-import ems.member.DataBaseConnectionInfo;
+import com.ems.member.DataBaseConnectionInfo;
 
 import java.util.Iterator;
 import java.util.List;

@@ -1,7 +1,7 @@
 package com.ems.member.service;
 
-import ems.member.Student;
-import ems.member.dao.StudentDao;
+import com.ems.member.Student;
+import com.ems.member.dao.StudentDao;
 
 public class StudentDeleteService {
 

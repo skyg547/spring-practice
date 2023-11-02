@@ -1,6 +1,6 @@
 package com.ems.member.dao;
 
-import ems.member.Student;
+import com.ems.member.Student;
 
 import java.util.HashMap;
 import java.util.Map;

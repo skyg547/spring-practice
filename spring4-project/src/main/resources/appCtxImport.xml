@@ -8,26 +8,26 @@
 	<import resource="classpath:appCtx2.xml"/>
 	<import resource="classpath:appCtx3.xml"/>
 
-	<bean id="studentDao" class="ems.member.dao.StudentDao"></bean>
+	<bean id="studentDao" class="com.ems.member.dao.StudentDao"></bean>
 
 
-	<bean id="registerService" class="ems.member.service.StudentRegisterService">
+	<bean id="registerService" class="com.ems.member.service.StudentRegisterService">
 		<constructor-arg ref="studentDao"></constructor-arg>
 	</bean>
 
-	<bean id="modifyService" class="ems.member.service.StudentModifyService">
+	<bean id="modifyService" class="com.ems.member.service.StudentModifyService">
 		<constructor-arg ref="studentDao"></constructor-arg>
 	</bean>
 
-	<bean id="deleteService" class="ems.member.service.StudentDeleteService">
+	<bean id="deleteService" class="com.ems.member.service.StudentDeleteService">
 		<constructor-arg ref="studentDao"></constructor-arg>
 	</bean>
 
-	<bean id="selectService" class="ems.member.service.StudentSelectService">
+	<bean id="selectService" class="com.ems.member.service.StudentSelectService">
 		<constructor-arg ref="studentDao"></constructor-arg>
 	</bean>
 
-	<bean id="allSelectService" class="ems.member.service.StudentAllSelectService">
+	<bean id="allSelectService" class="com.ems.member.service.StudentAllSelectService">
 		<constructor-arg ref="studentDao"></constructor-arg>
 	</bean>
 

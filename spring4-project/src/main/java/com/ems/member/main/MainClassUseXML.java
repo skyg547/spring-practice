@@ -1,7 +1,8 @@
 package com.ems.member.main;
 
-import ems.member.Student;
-import ems.member.service.*;
+import com.ems.member.Student;
+import com.ems.member.service.EMSInformationService;
+import com.ems.member.service.StudentAllSelectService;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
 import java.util.Iterator;
@@ -41,7 +42,7 @@ public class MainClassUseXML {
 		informationService.outputEMSInformation();
 
 //		StudentRegisterService registerService = assembler.getRegisterService();
-		StudentRegisterService registerService = ctx.getBean("registerService", StudentRegisterService.class);
+		com.ems.member.service.StudentRegisterService registerService = ctx.getBean("registerService", com.ems.member.service.StudentRegisterService.class);
 		for (int j = 0; j < sNums.length; j++) {
 			Student student = new Student(sNums[j], sIds[j], sPws[j], sNames[j],
 					sAges[j], sGenders[j], sMajors[j]);
@@ -49,12 +50,12 @@ public class MainClassUseXML {
 		}
 
 //		StudentModifyService modifyService = assembler.getModifyService();
-		StudentModifyService modifyService = ctx.getBean("modifyService", StudentModifyService.class);
+		com.ems.member.service.StudentModifyService modifyService = ctx.getBean("modifyService", com.ems.member.service.StudentModifyService.class);
 		modifyService.modify(new Student("H39lesvj7544vf89", "deer", "00000", "melissa",
 				26, "W", "Vocal Music"));
 
 //		StudentSelectService selectService = assembler.getSelectService();
-		StudentSelectService selectService = ctx.getBean("selectService", StudentSelectService.class);
+		com.ems.member.service.StudentSelectService selectService = ctx.getBean("selectService", com.ems.member.service.StudentSelectService.class);
 		Student modifiedStudent = selectService.select("H39lesvj7544vf89");
 		System.out.print("sNum:" + modifiedStudent.getsNum() + "\t");
 		System.out.print("|sId:" + modifiedStudent.getsId() + "\t");

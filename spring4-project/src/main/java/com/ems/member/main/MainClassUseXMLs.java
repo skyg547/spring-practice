@@ -1,7 +1,7 @@
 package com.ems.member.main;
 
-import ems.member.Student;
-import ems.member.service.*;
+import com.ems.member.Student;
+import com.ems.member.service.*;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
 import java.util.Iterator;

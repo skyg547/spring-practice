@@ -1,11 +1,10 @@
 package com.ems.member.main;
 
-import ems.member.Student;
-import ems.member.assembler.StudentAssembler;
-import ems.member.service.StudentAllSelectService;
-import ems.member.service.StudentModifyService;
-import ems.member.service.StudentRegisterService;
-import ems.member.service.StudentSelectService;
+import com.ems.member.Student;
+import com.ems.member.assembler.StudentAssembler;
+import com.ems.member.service.StudentAllSelectService;
+import com.ems.member.service.StudentModifyService;
+import com.ems.member.service.StudentRegisterService;
 
 import java.util.Iterator;
 import java.util.Map;
@@ -50,7 +49,7 @@ public class MainClass {
 		modifyService.modify(new Student("H39lesvj7544vf89", "deer", "00000", "melissa",
 				26, "W", "Vocal Music"));
 
-		StudentSelectService selectService = assembler.getSelectService();
+		com.com.ems.member.service.StudentSelectService selectService = assembler.getSelectService();
 		Student modifiedStudent = selectService.select("H39lesvj7544vf89");
 		System.out.print("sNum:" + modifiedStudent.getsNum() + "\t");
 		System.out.print("|sId:" + modifiedStudent.getsId() + "\t");
