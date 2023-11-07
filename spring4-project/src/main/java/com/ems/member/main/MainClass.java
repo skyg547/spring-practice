@@ -49,7 +49,7 @@ public class MainClass {
 		modifyService.modify(new Student("H39lesvj7544vf89", "deer", "00000", "melissa",
 				26, "W", "Vocal Music"));
 
-		com.com.ems.member.service.StudentSelectService selectService = assembler.getSelectService();
+		com.ems.member.service.StudentSelectService selectService = assembler.getSelectService();
 		Student modifiedStudent = selectService.select("H39lesvj7544vf89");
 		System.out.print("sNum:" + modifiedStudent.getsNum() + "\t");
 		System.out.print("|sId:" + modifiedStudent.getsId() + "\t");

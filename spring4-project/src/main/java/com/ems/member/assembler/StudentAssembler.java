@@ -1,24 +1,23 @@
 package com.ems.member.assembler;
 
 import com.ems.member.dao.StudentDao;
-import com.ems.member.service.StudentAllSelectService;
-import com.ems.member.service.StudentDeleteService;
+import com.ems.member.service.*;
 
 public class StudentAssembler {
 
 	private StudentDao studentDao;
-	private com.com.ems.member.service.StudentRegisterService registerService;
-	private com.com.ems.member.service.StudentModifyService modifyService;
+	private com.ems.member.service.StudentRegisterService registerService;
+	private com.ems.member.service.StudentModifyService modifyService;
 	private StudentDeleteService deleteService;
-	private com.com.ems.member.service.StudentSelectService selectService;
+	private com.ems.member.service.StudentSelectService selectService;
 	private StudentAllSelectService allSelectService;
 
 	public StudentAssembler() {
 		studentDao = new StudentDao();
-		registerService = new com.com.ems.member.service.StudentRegisterService(studentDao);
-		modifyService = new com.com.ems.member.service.StudentModifyService(studentDao);
+		registerService = new com.ems.member.service.StudentRegisterService(studentDao);
+		modifyService = new com.ems.member.service.StudentModifyService(studentDao);
 		deleteService = new StudentDeleteService(studentDao);
-		selectService = new com.com.ems.member.service.StudentSelectService(studentDao);
+		selectService = new com.ems.member.service.StudentSelectService(studentDao);
 		allSelectService = new StudentAllSelectService(studentDao);
 	}
 
@@ -30,19 +29,19 @@ public class StudentAssembler {
 		this.studentDao = studentDao;
 	}
 
-	public com.com.ems.member.service.StudentRegisterService getRegisterService() {
+	public com.ems.member.service.StudentRegisterService getRegisterService() {
 		return registerService;
 	}
 
-	public void setRegisterService(com.com.ems.member.service.StudentRegisterService registerService) {
+	public void setRegisterService(com.ems.member.service.StudentRegisterService registerService) {
 		this.registerService = registerService;
 	}
 
-	public com.com.ems.member.service.StudentModifyService getModifyService() {
+	public com.ems.member.service.StudentModifyService getModifyService() {
 		return modifyService;
 	}
 
-	public void setModifyService(com.com.ems.member.service.StudentModifyService modifyService) {
+	public void setModifyService(com.ems.member.service.StudentModifyService modifyService) {
 		this.modifyService = modifyService;
 	}
 
@@ -54,11 +53,11 @@ public class StudentAssembler {
 		this.deleteService = deleteService;
 	}
 
-	public com.com.ems.member.service.StudentSelectService getSelectService() {
+	public com.ems.member.service.StudentSelectService getSelectService() {
 		return selectService;
 	}
 
-	public void setSelectService(com.com.ems.member.service.StudentSelectService selectService) {
+	public void setSelectService(com.ems.member.service.StudentSelectService selectService) {
 		this.selectService = selectService;
 	}
 
