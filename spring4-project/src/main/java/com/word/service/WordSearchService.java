@@ -4,13 +4,19 @@ import com.word.WordSet;
 import com.word.dao.WordDao;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.annotation.Resource;
+
 public class WordSearchService {
 
 
 	//	@Autowired --> default 생성자 구현 필수
+	@Resource
 	private WordDao wordDao;
 
-	@Autowired
+	public WordSearchService() {
+	}
+
+//	@Autowired
 	public WordSearchService(WordDao wordDao) {
 		this.wordDao = wordDao;
 	}
