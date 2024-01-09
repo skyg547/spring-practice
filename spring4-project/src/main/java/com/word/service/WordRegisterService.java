@@ -2,10 +2,13 @@ package com.word.service;
 
 import com.word.WordSet;
 import com.word.dao.WordDao;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class WordRegisterService {
+
 	private WordDao wordDao;
 
+	@Autowired
 	public WordRegisterService(WordDao wordDao) {
 		this.wordDao = wordDao;
 	}
