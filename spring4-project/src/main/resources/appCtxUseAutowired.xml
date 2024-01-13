@@ -10,7 +10,12 @@
 <!--	anntation context 사용 설정 import 위 beans 스키마도 필요-->
 	<context:annotation-config/>
 
-	<bean id="wordDao" class="com.word.dao.WordDao"/>
+	<bean id="wordDao1" class="com.word.dao.WordDao">
+		<qualifier value="usedDao"></qualifier>
+	</bean>
+
+	<bean id="wordDao2" class="com.word.dao.WordDao"/>
+	<bean id="wordDao3" class="com.word.dao.WordDao"/>
 	<bean id="registerService" class="com.word.service.WordRegisterService"/>
 	<bean id="searchService" class="com.word.service.WordSearchService"/>
 
