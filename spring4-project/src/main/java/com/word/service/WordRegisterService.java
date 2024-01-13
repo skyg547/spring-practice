@@ -3,12 +3,14 @@ package com.word.service;
 import com.word.WordSet;
 import com.word.dao.WordDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 import javax.annotation.Resource;
 
 public class WordRegisterService {
 
 	@Resource
+	@Qualifier("usedDao")
 	private WordDao wordDao;
 
 	public WordRegisterService() {
