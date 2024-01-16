@@ -1,5 +1,7 @@
 package com.bms.book;
 
+import com.bms.member.Member;
+
 public class Book {
 	private String bNum;
 	private String bTitle;
