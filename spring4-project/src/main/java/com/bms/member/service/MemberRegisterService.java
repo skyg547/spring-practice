@@ -8,9 +8,18 @@ public class MemberRegisterService {
 	@Autowired
 	private MemberDao memberDao;
 
-	public MemberRegisterService() { }
+	public MemberRegisterService() {
+	}
 
 	public void register(Member member) {
 		memberDao.insert(member);
+	}
+
+	private void initMethod() {
+		System.out.println("-- init method --");
+	}
+
+	private void destroyMethod() {
+		System.out.println("-- destory memthod --");
 	}
 }

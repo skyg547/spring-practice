@@ -15,6 +15,6 @@
 
 
 	<bean id="memberDao" class="com.bms.member.dao.MemberDao" />
-	<bean id="memberRegisterService" class="com.bms.member.service.MemberRegisterService" />
+	<bean id="memberRegisterService" class="com.bms.member.service.MemberRegisterService" init-method="initMethod" destroy-method="destroyMethod"/>
 	<bean id="memberSearchService" class="com.bms.member.service.MemberSearchService" />
 </beans>
