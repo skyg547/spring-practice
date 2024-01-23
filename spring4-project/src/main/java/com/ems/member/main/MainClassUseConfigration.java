@@ -60,10 +60,8 @@ public class MainClassUseConfigration {
 		StudentAllSelectService allSelectService = ctx.getBean("allSelectService", StudentAllSelectService.class);
 		Map<String, Student> allStudent = allSelectService.allSelect();
 		Set<String> keys = allStudent.keySet();
-		Iterator<String> iterator = keys.iterator();
 
-		while (iterator.hasNext()) {
-			String key = iterator.next();
+		for (String key : keys) {
 			Student student = allStudent.get(key);
 			System.out.print("sNum:" + student.getsNum() + "\t");
 			System.out.print("|sId:" + student.getsId() + "\t");
@@ -77,7 +75,7 @@ public class MainClassUseConfigration {
 
 		while (true) {
 			Scanner scanner = new Scanner(System.in);
-			String str = "";
+			String str;
 
 			System.out.println("\n===================================================================" + "==============================================================================");
 			System.out.println("Select number.");
