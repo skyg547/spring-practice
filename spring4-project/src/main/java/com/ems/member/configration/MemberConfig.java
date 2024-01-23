@@ -19,4 +19,33 @@ public class MemberConfig {
 		return new StudentDao();
 	}
 
+	// 참조는 Argument 로 전달
+	//	<bean id="registerService" class="com.ems.member.service.StudentRegisterService">
+	//		<constructor-arg ref="studentDao"></constructor-arg>
+	//	</bean>
+	@Bean
+	public StudentRegisterService registerService() {
+		return new StudentRegisterService(studentDao());
+	}
+
+	@Bean
+	public StudentModifyService modifyService() {
+		return new StudentModifyService(studentDao());
+	}
+
+	@Bean
+	public StudentDeleteService deleteService() {
+		return new StudentDeleteService(studentDao());
+	}
+
+	@Bean
+	public StudentSelectService selectService() {
+		return new StudentSelectService(studentDao());
+	}
+
+	@Bean
+	public StudentAllSelectService allSelectService() {
+		return new StudentAllSelectService(studentDao());
+	}
+
 }
