@@ -3,22 +3,16 @@ package com.ems.member.configration;
 import com.ems.member.DataBaseConnectionInfo;
 import com.ems.member.dao.StudentDao;
 import com.ems.member.service.*;
-import com.sun.media.sound.AbstractMidiDeviceProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.env.MapPropertySource;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Configuration
 public class MemberConfig {
-	//  클래스 반환형 타입, id = 메서드 이름
-	//		<bean id="studentDao" class="com.ems.member.dao.StudentDao"></bean>
-	@Bean
-	public StudentDao studentDao() {
-		return new StudentDao();
-	}
-
 	// 참조는 Argument 로 전달
 	//	<bean id="registerService" class="com.ems.member.service.StudentRegisterService">
 	//		<constructor-arg ref="studentDao"></constructor-arg>
@@ -26,6 +20,13 @@ public class MemberConfig {
 	@Bean
 	public StudentRegisterService registerService() {
 		return new StudentRegisterService(studentDao());
+	}
+
+	//  클래스 반환형 타입, id = 메서드 이름
+	//		<bean id="studentDao" class="com.ems.member.dao.StudentDao"></bean>
+	@Bean
+	public StudentDao studentDao() {
+		return new StudentDao();
 	}
 
 	@Bean
@@ -48,6 +49,23 @@ public class MemberConfig {
 		return new StudentAllSelectService(studentDao());
 	}
 
+	@Bean
+	public EMSInformationService informationService() {
+		List<String> developers = Arrays.asList("Cheney", "Eloy", "Jasper", "Dillon", "Kian");
+
+
+		Map<String, String> administrators = new HashMap<>();
+		administrators.put("Cheney", "cheney@springPjt.org");
+		administrators.put("Jasper", "jasper@springPjt.org");
+
+
+		Map<String, DataBaseConnectionInfo> dbInfos = new HashMap<>();
+		dbInfos.put("dev", dataBaseConnectionInfoDev());
+		dbInfos.put("real", dataBaseConnectionInfoReal());
+
+		return getEmsInformationService(developers, administrators, dbInfos);
+
+	}
 
 	@Bean // property 는 set method 사용
 	public DataBaseConnectionInfo dataBaseConnectionInfoDev() {
@@ -67,25 +85,6 @@ public class MemberConfig {
 		infoReal.setUserPw("masterpw");
 
 		return infoReal;
-	}
-
-
-	@Bean
-	public EMSInformationService informationService() {
-		List<String> developers = Arrays.asList("Cheney", "Eloy", "Jasper", "Dillon", "Kian");
-
-
-		Map<String, String> administrators = new HashMap<>();
-		administrators.put("Cheney", "cheney@springPjt.org");
-		administrators.put("Jasper", "jasper@springPjt.org");
-
-
-		Map<String, DataBaseConnectionInfo> dbInfos = new HashMap<>();
-		dbInfos.put("dev", dataBaseConnectionInfoDev());
-		dbInfos.put("real", dataBaseConnectionInfoReal());
-
-		return getEmsInformationService(developers, administrators, dbInfos);
-
 	}
 
 	private static EMSInformationService getEmsInformationService(List<String> developers, Map<String, String> administrators, Map<String, DataBaseConnectionInfo> dbInfos) {
