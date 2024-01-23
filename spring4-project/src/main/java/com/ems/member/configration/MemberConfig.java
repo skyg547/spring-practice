@@ -69,4 +69,41 @@ public class MemberConfig {
 		return infoReal;
 	}
 
+
+	@Bean
+	public EMSInformationService informationService() {
+		List<String> developers = Arrays.asList("Cheney", "Eloy", "Jasper", "Dillon", "Kian");
+
+
+		Map<String, String> administrators = new HashMap<>();
+		administrators.put("Cheney", "cheney@springPjt.org");
+		administrators.put("Jasper", "jasper@springPjt.org");
+
+
+		Map<String, DataBaseConnectionInfo> dbInfos = new HashMap<>();
+		dbInfos.put("dev", dataBaseConnectionInfoDev());
+		dbInfos.put("real", dataBaseConnectionInfoReal());
+
+		EMSInformationService info = getEmsInformationService(developers, administrators, dbInfos);
+
+		return info;
+
+	}
+
+	private static EMSInformationService getEmsInformationService(List<String> developers, Map<String, String> administrators, Map<String, DataBaseConnectionInfo> dbInfos) {
+		EMSInformationService info = new EMSInformationService();
+		info.setInfo("Education Management System program was developed in 2015");
+		info.setCopyRight("COPYRIGHT(C) 2015 EMS CO., LTD. ALL RIGHT RESERVED. CONTACT MASTER FOR MORE INFORMATION.");
+		info.setVer("The version is 1.0");
+		info.setsYear(2015);
+		info.setsMonth(1);
+		info.setsDay(1);
+		info.seteDay(2015);
+		info.seteMonth(2);
+		info.seteYear(28);
+		info.setDevelopers(developers);
+		info.setAdministrators(administrators);
+		info.setDbInfos(dbInfos);
+		return info;
+	}
 }
