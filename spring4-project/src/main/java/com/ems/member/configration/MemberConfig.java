@@ -84,9 +84,7 @@ public class MemberConfig {
 		dbInfos.put("dev", dataBaseConnectionInfoDev());
 		dbInfos.put("real", dataBaseConnectionInfoReal());
 
-		EMSInformationService info = getEmsInformationService(developers, administrators, dbInfos);
-
-		return info;
+		return getEmsInformationService(developers, administrators, dbInfos);
 
 	}
 
