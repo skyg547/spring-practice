@@ -12,5 +12,11 @@ import java.util.*;
 
 @Configuration
 public class MemberConfig {
+	//  클래스 반환형 타입, id = 메서드 이름
+	//		<bean id="studentDao" class="com.ems.member.dao.StudentDao"></bean>
+	@Bean
+	public StudentDao studentDao() {
+		return new StudentDao();
+	}
 
 }
