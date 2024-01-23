@@ -48,4 +48,25 @@ public class MemberConfig {
 		return new StudentAllSelectService(studentDao());
 	}
 
+
+	@Bean // property 는 set method 사용
+	public DataBaseConnectionInfo dataBaseConnectionInfoDev() {
+		DataBaseConnectionInfo infoDev = new DataBaseConnectionInfo();
+		infoDev.setJdbcUrl("jdbc:oracle:thin:@localhost:1521:xe");
+		infoDev.setUserId("scott");
+		infoDev.setUserPw("tiger");
+
+		return infoDev;
+	}
+
+	@Bean // property 는 set method 사용
+	public DataBaseConnectionInfo dataBaseConnectionInfoReal() {
+		DataBaseConnectionInfo infoReal = new DataBaseConnectionInfo();
+		infoReal.setJdbcUrl("jdbc:oracle:thin:@192.168.0.1:1521:xe");
+		infoReal.setUserId("masterid");
+		infoReal.setUserPw("masterpw");
+
+		return infoReal;
+	}
+
 }
